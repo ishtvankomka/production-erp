@@ -32,7 +32,7 @@ const useAuth = (): AuthState | { customer: null, worker: null } => {
 export const AuthProvider = (props: PropsWithChildren) => {
     const [loading, setLoading] = useState(true);
 
-    const [user, setUser] = useState<object | null>(null);
+    //const [user, setUser] = useState<object | null>(null);
     const [userEmail, setUserEmail] = useState<string>('');
 
     const { worker } = useWorkerByEmail(userEmail)
@@ -44,10 +44,10 @@ export const AuthProvider = (props: PropsWithChildren) => {
             console.log('auth:', auth)
             console.log('user:', user)
             if (user) {
-                setUser(user);
+                //setUser(user);
                 setUserEmail(user?.email || '')
             } else {
-                setUser(null);
+                //setUser(null);
                 setUserEmail('')
             }
             setLoading(false);
