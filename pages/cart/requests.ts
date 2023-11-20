@@ -19,7 +19,8 @@ export default async function createOrder(data: OrderData) {
         result = await addDoc(collection(db, "Orders"), {
             date_created: new Date().getTime(),
             items,
-            email
+            email,
+            status: 'created'
         });
 
     } catch (e) {

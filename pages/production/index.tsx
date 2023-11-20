@@ -1,5 +1,13 @@
 'use client'
+import Link from 'next/link'
 
 export default function Page() {
-    return (<h1>Production page</h1>);
+    return (
+        <div>
+            <Link href="/production/approve">approve</Link>
+            <Link href="/production/produce">produce</Link>
+            <Link href="/production/test">test</Link>
+            <Link href="/production/deliver">deliver</Link>
+        </div>
+    );
 }

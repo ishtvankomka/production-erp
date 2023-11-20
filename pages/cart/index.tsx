@@ -3,11 +3,13 @@ import useCart from '@/context/CartContext'
 import createOrder from './requests'
 import useAuth from '@/context/AuthContext'
 import { MouseEvent } from 'react'
+import { useRouter } from 'next/router'
 
 export default function Page() {
     //const { products, loadingProducts } = useProducts()
     const { cartItems, setCartItems } = useCart()
     const { worker, customer } = useAuth()
+    const router = useRouter()
 
     const deleteCartItem = (i: number) => {
         setCartItems([...cartItems]?.filter((e, index) => index !== i))
@@ -47,7 +49,9 @@ export default function Page() {
             items: cartItems,
             email
         }
-        await createOrder(data)
+        await createOrder(data).then(() => {
+            router.push('/')
+        })
     }
 
     return (
