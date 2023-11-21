@@ -107,6 +107,12 @@ export const BodyWrapper = (props: PropsWithChildren) => {
                                     <Text style={router?.pathname?.includes('/production/history') ? { color: 'blue' } : {}} strong>History</Text>
                                 </Link>
                             }
+                            {
+                                worker?.permissions?.SystemAdmin &&
+                                <Link href="/production/workers">
+                                    <Text style={router?.pathname?.includes('/production/workers') ? { color: 'blue' } : {}} strong>Workers</Text>
+                                </Link>
+                            }
                         </Flex>
                         <Flex
                             style={{ width: '100%', minHeight: '100%' }}
