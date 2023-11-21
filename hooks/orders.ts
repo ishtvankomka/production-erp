@@ -83,3 +83,7 @@ export const useDeliveredOrders = () => {
     return useOrders(dbquery)
 }
 
+export const useClientOrders = (id: string, email: string) => {
+    const dbquery = query(collection(db, "Orders"), or(where('user_id', '==', id), where('email', '==', email)))
+    return useOrders(dbquery)
+}

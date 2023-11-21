@@ -34,6 +34,12 @@ export const BodyWrapper = (props: PropsWithChildren) => {
                     </Link>
                 }
                 {
+                    !worker && customer &&
+                    <Link href="/orders">
+                        <Text style={router?.pathname === '/cart' ? { color: 'blue' } : {}} strong>My orders</Text>
+                    </Link>
+                }
+                {
                     !(worker || customer) &&
                     <>
                         <Link href="/signin">
