@@ -83,6 +83,9 @@ export const BodyWrapper = (props: PropsWithChildren) => {
                             <Link href="/production/deliver">
                                 <Text style={router?.pathname?.includes('/production/deliver') ? { color: 'blue' } : {}} strong>Deliver</Text>
                             </Link>
+                            <Link href="/production/history">
+                                <Text style={router?.pathname?.includes('/production/history') ? { color: 'blue' } : {}} strong>History</Text>
+                            </Link>
                         </Flex>
                         <Flex
                             style={{ width: '100%', minHeight: '100%' }}
@@ -97,9 +100,7 @@ export const BodyWrapper = (props: PropsWithChildren) => {
                     >
                         {props.children}
                     </Flex>
-
             }
-
         </Flex>
     );
 };
