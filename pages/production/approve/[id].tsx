@@ -1,6 +1,6 @@
 import { useOrder } from '@/hooks/orders'
 import { useRouter } from 'next/router'
-import approveOrder from './requests'
+import approveOrder from './_requests'
 import { Approve } from '@/components/Approve'
 
 export default function Page() {

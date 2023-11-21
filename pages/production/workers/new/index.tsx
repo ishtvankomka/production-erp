@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Checkbox, Flex, Typography, Input, Button } from 'antd';
 import type { CheckboxValueType } from 'antd/es/checkbox/Group';
 import { useRouter } from 'next/router';
-import createNewWorker from './requests';
+import createNewWorker from './_requests';
 
 const { Group } = Checkbox
 const { Title, Text } = Typography

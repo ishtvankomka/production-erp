@@ -1,6 +1,6 @@
 import { useOrder } from '@/hooks/orders'
 import { useRouter } from 'next/router'
-import { deliveredOrder, deliveringOrder } from './requests'
+import { deliveredOrder, deliveringOrder } from './_requests'
 import { Deliver } from '@/components/Deliver'
 
 export default function Page() {

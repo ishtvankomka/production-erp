@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { CheckboxValueType } from 'antd/es/checkbox/Group'
 import { UserWorkerPermissions } from '@/types/User'
 import { Button, Checkbox, Flex, Input, Typography } from 'antd'
-import saveWorker from './requests'
+import saveWorker from './_requests'
 
 const { Group } = Checkbox
 const { Title, Text } = Typography
