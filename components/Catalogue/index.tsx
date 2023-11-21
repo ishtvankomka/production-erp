@@ -34,7 +34,7 @@ export const Catalogue: React.FC<CatalogueProps> = (data) => {
                     <Text strong>Loading...</Text>
                     :
                     <div>
-                        <Row gutter={50} justify="space-between">
+                        <Flex justify="space-evenly" wrap="wrap">
                             {
                                 products?.map((product, i) => {
                                     return (
@@ -48,7 +48,7 @@ export const Catalogue: React.FC<CatalogueProps> = (data) => {
                                     )
                                 })
                             }
-                        </Row>
+                        </Flex>
 
                     </div>
             }

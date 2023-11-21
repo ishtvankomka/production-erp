@@ -1,8 +1,9 @@
-export type UserCustomer = any
+export type UserCustomer = {
+    id: string
+    email: string
+}
 
-
-
-export type UserWorker = any
-
-
-
+export type UserWorker = {
+    id: string
+    email: string
+}

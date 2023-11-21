@@ -48,8 +48,9 @@ export const Deliver: React.FC<DeliverProps> = (data) => {
             gap='large'
             style={{ padding: '0px 20px 0px 50px' }}
         >
-            <Title level={2}>Order # {order?.id}</Title>
+            <Title level={2}>Order # {order?.date_created}</Title>
             <Title level={4}>Created {`${new Date(order?.date_created).getDate()}/${new Date(order?.date_created).getMonth()}/${new Date(order?.date_created).getFullYear()}`}</Title>
+            <Title level={4}>Shipping data: {order?.shipping_data}</Title>
 
             <Flex vertical>
                 <Title level={5}>Original Items</Title>

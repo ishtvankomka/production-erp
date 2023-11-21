@@ -23,19 +23,17 @@ export const ProductCard: React.FC<ProductCardProps> = (data) => {
     } = data
 
     return (
-        <Col span={10}>
-            <Card
-                title={product?.name}
-                actions={(customer && !worker) ? [<ShoppingCartOutlined onClick={() => { addToCart(product) }} />] : []}
-                cover={
-                    <img
-                        alt="example"
-                        src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                    />
-                }
-            >
-                <Text>{product?.price ? `$${product.price}` : ''}</Text>
-            </Card>
-        </Col>
+        <Card
+            title={product?.name}
+            actions={(customer && !worker) ? [<ShoppingCartOutlined onClick={() => { addToCart(product) }} />] : []}
+            style={{ width: '300px', margin: '50px' }}
+        >
+            <img
+                style={{ width: '250px', height: '250px', objectFit: 'cover' }}
+                alt=""
+                src={product?.image}
+            />
+            <Text>{product?.price ? `$${product.price}` : ''}</Text>
+        </Card>
     )
 }

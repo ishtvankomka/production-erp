@@ -5,12 +5,16 @@ import { addDoc, collection } from "firebase/firestore";
 type OrderData = {
     items: CartItem[]
     email: string
+    user_id: string
+    shipping_data: string
 }
 
 export default async function createOrder(data: OrderData) {
     const {
         items,
-        email
+        email,
+        user_id,
+        shipping_data
     } = data
 
     let result = null,
@@ -20,7 +24,9 @@ export default async function createOrder(data: OrderData) {
             date_created: new Date().getTime(),
             items,
             email,
-            status: 'created'
+            user_id,
+            status: 'created',
+            shipping_data
         });
 
     } catch (e) {

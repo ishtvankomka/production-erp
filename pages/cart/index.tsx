@@ -4,12 +4,13 @@ import createOrder from './requests'
 import useAuth from '@/context/AuthContext'
 import { useRouter } from 'next/router'
 import { Cart } from '@/components/Cart'
+import { useState } from 'react'
 
 export default function Page() {
-    //const { products, loadingProducts } = useProducts()
     const { cartItems, setCartItems } = useCart()
     const { customer } = useAuth()
     const router = useRouter()
+    const [shippingData, setShippingData] = useState('')
 
     const deleteCartItem = (i: number) => {
         setCartItems([...cartItems]?.filter((_, index) => index !== i))
@@ -28,12 +29,15 @@ export default function Page() {
     }
 
     const handleOrderProducts = async () => {
-        const { email } = customer
+        const { email = '', id = '' } = customer!
         const data = {
             items: cartItems,
-            email
+            email,
+            user_id: id,
+            shipping_data: shippingData
         }
         await createOrder(data).then(() => {
+            setCartItems([])
             router.push('/')
         })
     }
@@ -43,6 +47,8 @@ export default function Page() {
             cartItems={cartItems}
             deleteCartItem={deleteCartItem}
             setCartItemCount={setCartItemCount}
+            shippingData={shippingData}
+            setShippingData={setShippingData}
             handleOrderProducts={handleOrderProducts}
         />
     )

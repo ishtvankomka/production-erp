@@ -8,6 +8,7 @@ export type Order = {
     items: CartItem[]
     email: string
     status: OrderStatus
-
+    shipping_data: string
+    
     defect_items?: CartItem[]
 }

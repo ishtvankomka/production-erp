@@ -54,7 +54,7 @@ export const Test: React.FC<TestProps> = (data) => {
             dataIndex: 'count',
             key: 'count',
             render: (_, record, index) => (
-                <InputNumber min={1} max={1000} value={record.count} onChange={(e) => { setDefectItemsCount(index, e as number) }} />
+                <InputNumber min={1} value={record.count} onChange={(e) => { setDefectItemsCount(index, e as number) }} />
             )
         }
     ];
@@ -69,7 +69,7 @@ export const Test: React.FC<TestProps> = (data) => {
             gap='large'
             style={{ padding: '0px 20px 0px 50px' }}
         >
-            <Title level={2}>Order # {order?.id}</Title>
+            <Title level={2}>Order # {order?.date_created}</Title>
             <Title level={4}>Created {`${new Date(order?.date_created).getDate()}/${new Date(order?.date_created).getMonth()}/${new Date(order?.date_created).getFullYear()}`}</Title>
 
             <Flex vertical>

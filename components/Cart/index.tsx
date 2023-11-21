@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex, Typography, InputNumber, Button, Table } from 'antd';
+import { Flex, Typography, InputNumber, Button, Table, Input } from 'antd';
 import { CartItem } from '@/types/CartProduct';
 import type { ColumnsType } from 'antd/es/table';
 import { DeleteOutlined } from '@ant-design/icons';
@@ -10,6 +10,8 @@ interface CartProps {
     cartItems: CartItem[]
     deleteCartItem: (i: number) => void
     setCartItemCount: (i: number, v: number) => void
+    shippingData: string
+    setShippingData: (v: string) => void
     handleOrderProducts: () => void
 }
 
@@ -18,6 +20,8 @@ export const Cart: React.FC<CartProps> = (data) => {
         cartItems,
         deleteCartItem,
         setCartItemCount,
+        shippingData,
+        setShippingData,
         handleOrderProducts
     } = data
 
@@ -44,7 +48,7 @@ export const Cart: React.FC<CartProps> = (data) => {
             dataIndex: 'count',
             key: 'count',
             render: (_, record, index) => (
-                <InputNumber min={1} max={1000} value={record.count} onChange={(e) => { setCartItemCount(index, e as number) }} />
+                <InputNumber min={1} value={record.count} onChange={(e) => { setCartItemCount(index, e as number) }} />
             )
         },
         {
@@ -88,11 +92,16 @@ export const Cart: React.FC<CartProps> = (data) => {
                 bordered
                 pagination={false}
             />
-            <Title level={4}>Total {cartItems.length ? cartItems.reduce((p, c) => p + c.count, 0) : 0}$</Title>
+            <Title level={4}>Total {cartItems.length ? cartItems.reduce((p, c) => p + c.count * c.price, 0) : 0}$</Title>
+            <Input
+                placeholder={`Shipping data`}
+                value={shippingData}
+                onChange={(e) => setShippingData(e.target.value)}
+            />
             <Button
                 type='primary'
                 onClick={() => { handleOrderProducts() }}
-                disabled={!cartItems.length}
+                disabled={!cartItems.length || !shippingData.length}
             >
                 Order products
             </Button>
