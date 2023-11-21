@@ -2,10 +2,9 @@
 import { Product } from '@/types/Product'
 import { UserCustomer, UserWorker } from '@/types/User'
 import React from 'react';
-//import styles from './styles.module.sass'
 import { Flex, Typography } from 'antd';
-import { Row } from "antd";
 import { ProductCard } from './Product';
+import { Loading } from '../Loading';
 
 const { Title, Text } = Typography;
 
@@ -31,7 +30,7 @@ export const Catalogue: React.FC<CatalogueProps> = (data) => {
             <Title>Catalogue</Title>
             {
                 loadingProducts ?
-                    <Text strong>Loading...</Text>
+                    <Loading />
                     :
                     <div>
                         <Flex justify="space-evenly" wrap="wrap">

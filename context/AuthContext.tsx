@@ -8,6 +8,7 @@ import firebase_app from '@/firebase/config';
 import { useWorkerByEmail } from "@/hooks/workers";
 import { useCustomerByEmail } from "@/hooks/customers";
 import { UserCustomer, UserWorker } from "@/types/User";
+import { Loading } from "@/components/Loading";
 
 const auth = getAuth(firebase_app);
 
@@ -55,7 +56,7 @@ export const AuthProvider = (props: PropsWithChildren) => {
 
     return (
         <AuthContext.Provider value={{ worker, customer }}>
-            {loading ? <div>Loading...</div> : props.children}
+            {loading ? <Loading /> : props.children}
         </AuthContext.Provider>
     );
 };
