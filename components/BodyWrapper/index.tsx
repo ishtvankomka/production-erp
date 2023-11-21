@@ -77,21 +77,36 @@ export const BodyWrapper = (props: PropsWithChildren) => {
                             style={{ width: '200px', height: '100%', padding: '20px' }}
                             vertical
                         >
-                            <Link href="/production/approve">
-                                <Text style={router?.pathname?.includes('/production/approve') ? { color: 'blue' } : {}} strong>Approve</Text>
-                            </Link>
-                            <Link href="/production/produce">
-                                <Text style={router?.pathname?.includes('/production/produce') ? { color: 'blue' } : {}} strong>Produce</Text>
-                            </Link>
-                            <Link href="/production/test">
-                                <Text style={router?.pathname?.includes('/production/test') ? { color: 'blue' } : {}} strong>Test</Text>
-                            </Link>
-                            <Link href="/production/deliver">
-                                <Text style={router?.pathname?.includes('/production/deliver') ? { color: 'blue' } : {}} strong>Deliver</Text>
-                            </Link>
-                            <Link href="/production/history">
-                                <Text style={router?.pathname?.includes('/production/history') ? { color: 'blue' } : {}} strong>History</Text>
-                            </Link>
+                            {
+                                worker?.permissions?.WarehouseManager &&
+                                <Link href="/production/approve">
+                                    <Text style={router?.pathname?.includes('/production/approve') ? { color: 'blue' } : {}} strong>Approve</Text>
+                                </Link>
+                            }
+                            {
+                                worker?.permissions?.ProductionManager &&
+                                <Link href="/production/produce">
+                                    <Text style={router?.pathname?.includes('/production/produce') ? { color: 'blue' } : {}} strong>Produce</Text>
+                                </Link>
+                            }
+                            {
+                                worker?.permissions?.Tester &&
+                                <Link href="/production/test">
+                                    <Text style={router?.pathname?.includes('/production/test') ? { color: 'blue' } : {}} strong>Test</Text>
+                                </Link>
+                            }
+                            {
+                                worker?.permissions?.DeliveryManager &&
+                                <Link href="/production/deliver">
+                                    <Text style={router?.pathname?.includes('/production/deliver') ? { color: 'blue' } : {}} strong>Deliver</Text>
+                                </Link>
+                            }
+                            {
+                                worker?.permissions?.SystemAdmin &&
+                                <Link href="/production/history">
+                                    <Text style={router?.pathname?.includes('/production/history') ? { color: 'blue' } : {}} strong>History</Text>
+                                </Link>
+                            }
                         </Flex>
                         <Flex
                             style={{ width: '100%', minHeight: '100%' }}
