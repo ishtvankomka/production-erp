@@ -6,7 +6,7 @@ type TestOrderData = {
     id: string
 }
 
-export async function testOrder(data: TestOrderData) {
+async function testOrder(data: TestOrderData) {
     const {
         id
     } = data
@@ -34,7 +34,7 @@ type FoundDefectsOrderData = {
     defect_items: CartItem[]
 }
 
-export async function foundDefetcsOrder(data: FoundDefectsOrderData) {
+async function foundDefetcsOrder(data: FoundDefectsOrderData) {
     const {
         id,
         defect_items
@@ -57,3 +57,10 @@ export async function foundDefetcsOrder(data: FoundDefectsOrderData) {
 
     return { result, error };
 }
+
+const testRequests = {
+    testOrder,
+    foundDefetcsOrder
+}
+
+export default testRequests

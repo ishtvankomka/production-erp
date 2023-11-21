@@ -1,9 +1,9 @@
 import { useOrder } from '@/hooks/orders'
 import { useRouter } from 'next/router'
-import { foundDefetcsOrder, testOrder } from './_requests'
 import { useEffect, useState } from 'react'
 import { CartItem } from '@/types/CartProduct'
 import { Test } from '@/components/Test'
+import testRequests from './_requests'
 
 export default function Page() {
     const router = useRouter()
@@ -22,7 +22,7 @@ export default function Page() {
         const data = {
             id: id as string
         }
-        await testOrder(data).then(() => {
+        await testRequests.testOrder(data).then(() => {
             router.push('/production/test')
         })
     }
@@ -49,7 +49,7 @@ export default function Page() {
                 defect_items: validDefectItems,
                 id: id as string
             }
-            await foundDefetcsOrder(data).then(() => {
+            await testRequests.foundDefetcsOrder(data).then(() => {
                 router.push('/produce/test')
             })
         }

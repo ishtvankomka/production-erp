@@ -5,7 +5,7 @@ type DeliveringOrderData = {
     id: string
 }
 
-export async function deliveringOrder(data: DeliveringOrderData) {
+async function deliveringOrder(data: DeliveringOrderData) {
     const {
         id
     } = data
@@ -31,7 +31,7 @@ type DeliverOrderData = {
     id: string
 }
 
-export async function deliveredOrder(data: DeliverOrderData) {
+async function deliveredOrder(data: DeliverOrderData) {
     const {
         id
     } = data
@@ -52,3 +52,10 @@ export async function deliveredOrder(data: DeliverOrderData) {
 
     return { result, error };
 }
+
+const deliverRequests = {
+    deliveringOrder,
+    deliveredOrder
+}
+
+export default deliverRequests
