@@ -10,7 +10,7 @@ export const useCustomerByEmail = (email: string) => {
             .then((querySnapshot) => {
                 const customers = querySnapshot.docs
                     .map((doc) => ({ ...doc.data(), id: doc.id }));
-                setCustomers(customers);
+                setCustomers(customers as UserCustomer[]);
             })
 
         return () => {

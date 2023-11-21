@@ -2,42 +2,64 @@
 import React from "react";
 import { useRouter } from 'next/navigation'
 import signIn from "@/firebase/signin";
+import { Flex, Typography, Input, Button } from 'antd';
+
+const { Password } = Input
+const { Title, Text } = Typography
 
 function Page() {
     const [email, setEmail] = React.useState('')
     const [password, setPassword] = React.useState('')
     const router = useRouter()
 
-    const handleForm = async (event: any) => {
-        event.preventDefault()
-
+    const handleSignIn = async () => {
         const { result, error } = await signIn(email, password);
 
         if (error) {
             return console.log(error)
         }
 
-        // else successful
         console.log(result)
         return router.push("/")
     }
-    return (<div className="wrapper">
-        <div className="form-wrapper">
-            <h1 className="mt-60 mb-30">Sign in</h1>
-            <form onSubmit={handleForm} className="form">
-                <label htmlFor="email">
-                    <p>Email</p>
-                    <input onChange={(e) => setEmail(e.target.value)} required type="email" name="email" id="email" placeholder="example@mail.com" />
-                </label>
-                <label htmlFor="password">
-                    <p>Password</p>
-                    <input onChange={(e) => setPassword(e.target.value)} required type="password" name="password" id="password" placeholder="password" />
-                </label>
-                <button type="submit">Sign in</button>
-            </form>
-        </div>
 
-    </div>);
+    return (
+        <Flex
+            vertical
+            gap='large'
+            justify="center"
+            align="center"
+        >
+            <Title level={2}>Sign in</Title>
+            <Flex
+                gap='small'
+                vertical
+            >
+                <Text>Email</Text>
+                <Input
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+            </Flex>
+            <Flex
+                gap='small'
+                vertical
+            >
+                <Text>Password</Text>
+                <Password
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+            </Flex>
+            <Button
+                type='primary'
+                onClick={() => { handleSignIn() }}
+                disabled={!(email.length && password.length)}
+            >
+                Sign in
+            </Button>
+        </Flex>
+    );
 }
 
 export default Page;
