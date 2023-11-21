@@ -1,7 +1,7 @@
 import { useOrder } from '@/hooks/orders'
 import { useRouter } from 'next/router'
 import { Deliver } from '@/components/Deliver'
-import deliverRequests from './_requests'
+import { deliveredOrder, deliveringOrder } from '@/requests/requests'
 
 export default function Page() {
     const router = useRouter()
@@ -14,7 +14,7 @@ export default function Page() {
         const data = {
             id: id as string
         }
-        await deliverRequests.deliveringOrder(data).then(() => {
+        await deliveringOrder(data).then(() => {
             router.push('/production/deliver')
         })
     }
@@ -23,7 +23,7 @@ export default function Page() {
         const data = {
             id: id as string
         }
-        await deliverRequests.deliveredOrder(data).then(() => {
+        await deliveredOrder(data).then(() => {
             router.push('/production/deliver')
         })
     }

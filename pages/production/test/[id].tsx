@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { CartItem } from '@/types/CartProduct'
 import { Test } from '@/components/Test'
-import testRequests from './_requests'
+import { foundDefetcsOrder, testOrder } from '@/requests/requests'
 
 export default function Page() {
     const router = useRouter()
@@ -22,7 +22,7 @@ export default function Page() {
         const data = {
             id: id as string
         }
-        await testRequests.testOrder(data).then(() => {
+        await testOrder(data).then(() => {
             router.push('/production/test')
         })
     }
@@ -49,7 +49,7 @@ export default function Page() {
                 defect_items: validDefectItems,
                 id: id as string
             }
-            await testRequests.foundDefetcsOrder(data).then(() => {
+            await foundDefetcsOrder(data).then(() => {
                 router.push('/produce/test')
             })
         }
