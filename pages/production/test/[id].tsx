@@ -50,7 +50,7 @@ export default function Page() {
                 id: id as string
             }
             await foundDefetcsOrder(data).then(() => {
-                router.push('/produce/test')
+                router.push('/production/test')
             })
         }
     }
