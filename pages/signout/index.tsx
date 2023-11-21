@@ -2,15 +2,14 @@
 import React from "react";
 import { useRouter } from 'next/navigation'
 import signOutUser from "@/firebase/signout";
+import SignOut from "@/components/Signout";
 
 function Page() {
     const router = useRouter()
 
-    const handlePress = async (event: any) => {
-        event.preventDefault()
-
+    const handleSignOut = async () => {
         try {
-           await signOutUser();
+            await signOutUser();
         }
         catch (e) {
             console.error(e)
@@ -19,9 +18,11 @@ function Page() {
         return router.push("/")
     }
 
-    return (<div className="">
-        <button onClick={(e) => { handlePress(e) }}>Sign out</button>
-    </div>);
+    return (
+        <SignOut
+            handleSignOut={handleSignOut}
+        />
+    );
 }
 
 export default Page;

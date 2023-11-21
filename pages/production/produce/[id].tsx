@@ -1,6 +1,7 @@
 import { useOrder } from '@/hooks/orders'
 import { useRouter } from 'next/router'
 import produceOrder from './requests'
+import { Produce } from '@/components/Produce'
 
 export default function Page() {
     const router = useRouter()
@@ -19,17 +20,15 @@ export default function Page() {
     }
 
     return (
-        <div>
+        <>
             {
-                !loadingOrder && order &&
-                <div>
-                    <p>order# {order.date_created}</p>
-                    {JSON.stringify(order)}
-                    <button onClick={() => { handleProduceOrder() }}>
-                        Produce
-                    </button>
-                </div>
+                order &&
+                <Produce
+                    order={order}
+                    loadingOrder={loadingOrder}
+                    handleProduceOrder={handleProduceOrder}
+                />
             }
-        </div>
+        </>
     );
 }

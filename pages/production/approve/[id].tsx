@@ -1,6 +1,7 @@
 import { useOrder } from '@/hooks/orders'
 import { useRouter } from 'next/router'
 import approveOrder from './requests'
+import { Approve } from '@/components/Approve'
 
 export default function Page() {
     const router = useRouter()
@@ -19,17 +20,15 @@ export default function Page() {
     }
 
     return (
-        <div>
+        <>
             {
-                !loadingOrder && order &&
-                <div>
-                    <p>order# {order.date_created}</p>
-                    {JSON.stringify(order)}
-                    <button onClick={() => { handleApproveOrder() }}>
-                        Approve
-                    </button>
-                </div>
+                order &&
+                <Approve
+                    order={order}
+                    loadingOrder={loadingOrder}
+                    handleApproveOrder={handleApproveOrder}
+                />
             }
-        </div>
+        </>
     );
 }

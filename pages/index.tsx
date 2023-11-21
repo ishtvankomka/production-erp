@@ -1,4 +1,5 @@
-"use client"
+import React from 'react';
+import { Catalogue } from '@/components/Catalogue'
 import useAuth from '@/context/AuthContext'
 import useCart from '@/context/CartContext'
 import { useProducts } from '@/hooks/products'
@@ -13,36 +14,18 @@ export default function Home() {
       setCartItems([{ ...product, count: 1 }, ...cartItems])
   }
 
-  const { worker, customer } = useAuth()
+  const { customer, worker } = useAuth()
 
 
   return (
-    <main>
-      <div>
-        <h1>Catalogue</h1>
-        {
-          loadingProducts ?
-            <p>loading...</p>
-            :
-            <div>
-              {
-                products?.map((product, i) => {
-                  return (
-                    <div key={i}>
-                      <p>{product.name}</p>
-                      {
-                        !worker &&
-                        <button onClick={() => addToCart(product)}>
-                          add to cart
-                        </button>
-                      }
-                    </div>
-                  )
-                })
-              }
-            </div>
-        }
-      </div>
-    </main>
+    <div>
+      <Catalogue
+        products={products}
+        loadingProducts={loadingProducts}
+        addToCart={addToCart}
+        customer={customer}
+        worker={worker}
+      />
+    </div>
   )
 }

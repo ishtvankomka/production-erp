@@ -1,6 +1,7 @@
 import { useOrder } from '@/hooks/orders'
 import { useRouter } from 'next/router'
 import { deliveredOrder, deliveringOrder } from './requests'
+import { Deliver } from '@/components/Deliver'
 
 export default function Page() {
     const router = useRouter()
@@ -28,24 +29,16 @@ export default function Page() {
     }
 
     return (
-        <div>
+        <>
             {
-                !loadingOrder && order &&
-                <div>
-                    <p>order# {order.date_created}</p>
-                    {JSON.stringify(order)}
-                    {
-                        order?.status === 'delivering' ?
-                            <button onClick={() => { handleApproveDeliveredOrder() }}>
-                                Approve Deliver
-                            </button>
-                            :
-                            <button onClick={() => { handleDeliverOrder() }}>
-                                Deliver
-                            </button>
-                    }
-                </div>
+                order &&
+                <Deliver
+                    order={order}
+                    loadingOrder={loadingOrder}
+                    handleDeliverOrder={handleDeliverOrder}
+                    handleApproveDeliveredOrder={handleApproveDeliveredOrder}
+                />
             }
-        </div>
+        </>
     );
 }
